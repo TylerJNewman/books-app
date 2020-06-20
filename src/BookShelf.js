@@ -28,7 +28,7 @@ const BookShelf = ({ books, title }) => {
         <Divider />
         <Grid container spacing={5} className={classes.gridContainer}>
           {books.map((book) => (
-            <Grid item xs={6} sm={3} md={2}>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
               <BookCard book={book} />
             </Grid>
           ))}
