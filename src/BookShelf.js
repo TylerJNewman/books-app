@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BookShelf = ({ books, title }) => {
+const BookShelf = ({ books, title, updateShelf }) => {
   const classes = useStyles();
   console.log(books);
   return (
@@ -28,8 +28,8 @@ const BookShelf = ({ books, title }) => {
         <Divider />
         <Grid container spacing={5} className={classes.gridContainer}>
           {books.map((book) => (
-            <Grid item xs={6} sm={4} md={2} lg={2}>
-              <BookCard book={book} />
+            <Grid item xs={6} sm={4} md={2} lg={2} key={book.id}>
+              <BookCard book={book} updateShelf={updateShelf} />
             </Grid>
           ))}
         </Grid>

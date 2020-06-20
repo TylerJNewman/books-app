@@ -23,15 +23,22 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: -10,
     bottom: -10,
-    width: 40,
-    height: 40,
+    width: theme.spacing(5),
+    height: theme.spacing(5),
   },
   cardContent: {
-    padding: '16px 0px',
+    padding: theme.spacing(2, 0),
   },
 }));
 
-const BookCard = ({ book }) => {
+const menuItems = [
+  { title: 'Currently Reading', name: 'currentlyReading' },
+  { title: 'Want to Read', name: 'wantToRead' },
+  { title: 'Read', name: 'read' },
+  { title: 'None', name: 'none' },
+];
+
+const BookCard = ({ book, updateShelf }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -41,6 +48,11 @@ const BookCard = ({ book }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSelection = (selection) => {
+    handleClose();
+    updateShelf(book, selection);
   };
 
   return (
@@ -70,10 +82,15 @@ const BookCard = ({ book }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Currently Reading</MenuItem>
-                <MenuItem onClick={handleClose}>Want to Read</MenuItem>
-                <MenuItem onClick={handleClose}>Read</MenuItem>
-                <MenuItem onClick={handleClose}>None</MenuItem>
+                {menuItems.map((item) => (
+                  <MenuItem
+                    onClick={() => handleSelection(item.name)}
+                    name={item.name}
+                    key={item.name}
+                  >
+                    {item.title}
+                  </MenuItem>
+                ))}
               </Menu>
             </CardMedia>
           </Card>

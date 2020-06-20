@@ -10,17 +10,26 @@ const App = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const books = await BooksAPI.getAll();
-      setBooks(books);
+      const updatedBooks = await BooksAPI.getAll();
+      setBooks(updatedBooks);
     }
     fetchData();
   }, []);
+
+  const updateShelf = async (book, shelf) => {
+    const response = await BooksAPI.update(book, shelf);
+    if (response) {
+      book.shelf = shelf;
+      const updatedBooks = await BooksAPI.getAll();
+      setBooks(updatedBooks);
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <NavBar />
-      <BooksDisplay books={books} />
+      <BooksDisplay books={books} updateShelf={updateShelf} />
     </ThemeProvider>
   );
 };
