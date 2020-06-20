@@ -62,7 +62,7 @@ const BookCard = ({ book, updateShelf }) => {
           <Card className={classes.root}>
             <CardMedia
               className={classes.media}
-              image={book.imageLinks.thumbnail}
+              image={book?.imageLinks?.thumbnail}
               title={book.title}
             >
               <Fab

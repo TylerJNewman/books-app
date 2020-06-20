@@ -24,8 +24,12 @@ const BookShelf = ({ books, title, updateShelf }) => {
   return (
     <div className={classes.section}>
       <div className={classes.root}>
-        <Typography variant="h5">{title}</Typography>
-        <Divider />
+        {title && (
+          <>
+            <Typography variant="h5">{title}</Typography>
+            <Divider />
+          </>
+        )}
         <Grid container spacing={5} className={classes.gridContainer}>
           {books.map((book) => (
             <Grid item xs={6} sm={4} md={2} lg={2} key={book.id}>
