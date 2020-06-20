@@ -8,7 +8,7 @@ const bookShelves = [
 ];
 
 const BooksDisplay = ({ books, updateShelf }) => (
-  <div>
+  <>
     {bookShelves.map((shelf) => {
       const fliteredBooks = books.filter((book) => book.shelf === shelf.name);
       return (
@@ -20,7 +20,7 @@ const BooksDisplay = ({ books, updateShelf }) => (
         />
       );
     })}
-  </div>
+  </>
 );
 
 export default BooksDisplay;

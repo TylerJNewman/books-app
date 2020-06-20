@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0, 2),
   },
   section: {
-    margin: theme.spacing(5, 2, 10, 2),
+    padding: theme.spacing(5, 2, 5, 2),
   },
   gridContainer: {
     marginTop: theme.spacing(1),
